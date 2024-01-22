@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .converter-container {
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        select {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="converter-container">
+        <h2>Temperature Converter</h2>
+        <input type="text" id="temperature" placeholder="Enter temperature" oninput="validateInput(this)">
+        <select id="unit">
+            <option value="celsius">Celsius</option>
+            <option value="fahrenheit">Fahrenheit</option>
+        </select>
+        <button onclick="convertTemperature()">Convert</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function validateInput(input) {
+            input.value = input.value.replace(/[^0-9.-]/g, '');
+        }
+
+        function convertTemperature() {
+            var temperatureInput = document.getElementById('temperature').value;
+            var unit = document.getElementById('unit').value;
+            var resultElement = document.getElementById('result');
+
+            if (temperatureInput === '') {
+                resultElement.innerText = 'Please enter a temperature.';
+                return;
+            }
+
+            var temperature = parseFloat(temperatureInput);
+
+            if (isNaN(temperature)) {
+                resultElement.innerText = 'Invalid input. Please enter a valid number.';
+                return;
+            }
+
+            if (unit === 'celsius') {
+                var convertedTemperature = (temperature * 9 / 5) + 32;
+                resultElement.innerText = `Converted Temperature: ${convertedTemperature.toFixed(2)} °F`;
+            } else {
+                var convertedTemperature = (temperature - 32) * 5 / 9;
+                resultElement.innerText = `Converted Temperature: ${convertedTemperature.toFixed(2)} °C`;
+            }
+        }
+    </script>
+</body>
+
+</html>
