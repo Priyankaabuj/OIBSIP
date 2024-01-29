@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #121212;
+            color: #fff;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-left: 120px;
+        }
+
+        hr {
+            color: #f0f0f0;
+            height: 20px;
+            width: 800px;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .profile-logo {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            position: absolute;
+            top: 0;
+            left: 5%;
+            transform: translateX(-50%);
+            box-shadow: 2px 2px 2px 2px #a9c6e5;
+        }
+
+        .profile-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-logo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom right, #fff 0%, #ddd 100%);
+            opacity: 0.2;
+        }
+
+        .profile-logo:hover::after {
+            opacity: 0.9;
+        }
+
+        nav {
+            display: flex;
+            justify-content: right;
+            background-color: #f0f0f0;
+            padding: 10px;
+        }
+
+        nav a {
+            color: #121212;
+            text-decoration: none;
+            margin: 0 15px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            flex-direction: column;
+            text-align: center;
+            position: relative;
+        }
+
+        #home {
+            background: #282537;
+            background-image: -webkit-radial-gradient(top, circle cover, #3c3b52 0%, #252233 80%);
+            color: #f0f0f0;
+        }
+
+        #skills {
+            background-color: #121212;
+            color: #f0f0f0;
+            margin-top: -200px;
+
+        }
+
+        /* ===== skillS =====*/
+        .skills-container {
+            width: 1142px;
+            margin: 0 auto;
+        }
+
+        .skills_box {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: start;
+            -ms-flex-align: start;
+            align-items: flex-start;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            padding: 50px 0;
+        }
+
+        .skills_item {
+            -ms-flex-preferred-size: calc(33.33333% - 30px);
+            flex-basis: calc(33.33333% - 30px);
+            margin: 0 15px 30px;
+            overflow: hidden;
+            border-radius: 28px;
+        }
+
+        .skills-item_link {
+            display: block;
+            padding: 30px 20px;
+            background-color: #fff;
+            overflow: hidden;
+            position: relative;
+            text-decoration: none;
+        }
+
+        .skills-item_link:hover,
+        .skills-item_link:hover .skills-item_date {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .skills-item_link:hover .skills-item_bg {
+            -webkit-transform: scale(10);
+            -ms-transform: scale(10);
+            transform: scale(10);
+        }
+
+        .skills-item_title {
+            text-decoration: none;
+            min-height: 87px;
+            margin: 0 0 25px;
+            overflow: hidden;
+            font-weight: bold;
+            font-size: 30px;
+            color: #121212;
+            z-index: 2;
+            position: relative;
+        }
+
+        .skills-item_date-box {
+            z-index: 2;
+            position: relative;
+        }
+
+        .skills-item_date {
+            color: #121212;
+            -webkit-transition: color .5s ease;
+            -o-transition: color .5s ease;
+            transition: color .5s ease
+        }
+
+        .skills-item_date p {
+            text-align: center;
+        }
+
+        .skills-item_bg {
+            height: 128px;
+            width: 128px;
+            background-color: #6f1bd3;
+            z-index: 1;
+            position: absolute;
+            top: -75px;
+            right: -75px;
+            border-radius: 50%;
+            -webkit-transition: all .5s ease;
+            -o-transition: all .5s ease;
+            transition: all .5s ease;
+        }
+
+        .skills_item:nth-child(2n) .skills-item_bg {
+            background-color: #a9c6e5;
+        }
+
+        .skills_item:nth-child(3n) .skills-item_bg {
+            background-color: #cd3e94;
+        }
+
+        .skills_item:nth-child(4n) .skills-item_bg {
+            background-color: #952aff;
+        }
+
+        .skills_item:nth-child(5n) .skills-item_bg {
+            background-color: #cd3e94;
+        }
+
+        .skills_item:nth-child(6n) .skills-item_bg {
+            background-color: #6f1bd3;
+        }
+
+
+
+        @media only screen and (max-width: 979px) {
+            .skills_item {
+                -ms-flex-preferred-size: calc(50% - 30px);
+                flex-basis: calc(50% - 30px);
+            }
+
+            .skills-item_title {
+                font-size: 24px;
+            }
+        }
+
+        @media only screen and (max-width: 767px) {
+            .skills-container {
+                width: 96%;
+            }
+
+        }
+
+        @media only screen and (max-width: 639px) {
+            .skills_item {
+                -ms-flex-preferred-size: 100%;
+                flex-basis: 100%;
+            }
+
+            .skills-item_title {
+                min-height: 72px;
+                line-height: 1;
+
+                font-size: 24px;
+            }
+
+            .skills-item_link {
+                padding: 22px 40px;
+            }
+
+            .skills-item_date-box {
+                font-size: 16px;
+            }
+        }
+
+        #mywork {
+            background-color: #121212;
+            padding: 50px 0;
+            color: #fff;
+        }
+
+        .work__container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .work__img {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .work__img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .work__img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        #contact {
+            background: #282537;
+            background-image: -webkit-radial-gradient(top, circle cover, #3c3b52 0%, #252233 80%);
+            color: #f0f0f0;
+        }
+
+        .contact__input {
+            width: 100%;
+            font-size: 20px;
+            font-weight: lighter;
+            padding: 20px;
+            border-radius: 20px;
+            border: 5px solid #a9c6e5;
+            outline: none;
+            margin-bottom: 20px;
+        }
+
+        .contact__button {
+            display: block;
+            border: 2px solid white;
+            background-color: #a9c6e5;
+            outline: none;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: auto;
+            border-radius: 10px;
+        }
+
+        #experience {
+            padding: 100px 0;
+            background: #282537;
+            background-image: -webkit-radial-gradient(top, circle cover, #3c3b52 0%, #252233 80%);
+        }
+
+        .experience-container {
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .experience-header {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #f0f0f0;
+        }
+
+        .experience-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .experience-card {
+            background-color: rgb(45, 45, 58);
+            border-radius: 8px;
+            padding: 20px;
+            width: calc(33.33% + 100px);
+            margin-bottom: 20px;
+            transition: transform 0.5s ease-in-out;
+            box-shadow: 0 0 10px 10px #a9c6e5;
+        }
+
+        .experience-card:nth-child(2n) {
+            box-shadow: 0 0 10px 10px #cd3e94;
+        }
+
+        .experience-card:nth-child(3n) {
+            box-shadow: 0 0 10px 10px rgba(255, 225, 29, 0.579);
+        }
+
+        .experience-card:nth-child(4n) {
+            box-shadow: 0 0 10px 10px #952aff;
+        }
+
+        .experience-card:hover {
+            +transform: scale(1.05);
+            box-shadow: 0 8px 16px #f0f0f0;
+            ;
+        }
+
+        .company-logo img {
+            height: 50px;
+            margin-right: 20px;
+        }
+
+        .position {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #fffb00;
+        }
+
+        .company {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: #ffffff;
+        }
+
+        .employment-date {
+            font-size: 1rem;
+            color: #888;
+        }
+
+        .responsibilities {
+            list-style: none;
+            padding-top: 10px;
+            padding-left: 20px;
+        }
+
+        .responsibility-item {
+            font-size: 0.9rem;
+            color: #fffb00;
+        }
+
+        @media (max-width: 768px) {
+            .experience-card {
+                width: 80%;
+            }
+
+            .experience-list {
+                flex-direction: column;
+            }
+
+            .experience-card {
+                margin-left: 20px;
+            }
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom right, #fff 0%, #ddd 100%);
+            opacity: 0.2;
+        }
+
+        .profile-image:hover::after {
+            opacity: 0.9;
+        }
+
+        .text-container {
+            z-index: 1;
+        }
+
+        .resume-link {
+            color: #333;
+            text-decoration: none;
+            background-color: #ddd;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .resume-link:hover {
+            background-color: #aaa;
+            color: #fff;
+        }
+
+        .social-icons {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .social-icon {
+            font-size: 24px;
+            color: #333;
+            background-color: #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .social-icon:hover {
+            background-color: #555;
+            color: #fff;
+
+        }
+
+        /* Hide the scrollbar */
+        #experience::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div>
+            <div class="profile-logo">
+                <img src="P-Letter-Logo-2-1.jpg" alt="Profile Image">
+            </div>
+            <h1>My Portfolio</h1>
+        </div>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="home">
+        <!-- Circular profile image with effect -->
+        <div class="profile-image">
+            <img src="profileimage.jpg" alt="Profile Image">
+        </div>
+
+        <div class="text-container">
+            <h2 style="color: #a9c6e5;">I am Priyanka Abuj</h2>
+            <p> Full Stack Web Developer.</p>
+            <p>Adaptable Full-stack Developer with lengthy web development experience. Fluent in development
+                languages,
+                database building, and cache mechanisms. Expertly manages end-to-end life cycles of software
+                systems,
+                running routine tests and installing necessary upgrades.</p>
+
+            <a href="#" class="resume-link">Checkout My Resume</a>
+
+            <div class="social-icons">
+                <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-hackerrank"></i></a>
+                <!-- Add other social icons as needed -->
+            </div>
+        </div>
+    </section>
+    <hr>
+    <!--===== skillS =====-->
+    <section class="skill section" id="skills">
+        <h2 class="section-title">skills</h2>
+
+        <div class="skills-container">
+            <div class="skills_box">
+                <div class="skills_item">
+                    <a href="#" class="skills-item_link">
+                        <div class="skills-item_bg"></div>
+
+                        <div class="skills-item_title">
+                            Web Design
+                        </div>
+
+                        <div class="skills-item_date-box">
+                            <span class="skills-item_date">
+                                <p>As a passionate and skilled web designer, I take great pride in creating visually
+                                    stunning, user-friendly, and functional websites.I aim to deliver memorable
+                                    online experiences that leave a lasting impression.</p>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="skills_item">
+                    <a href="#" class="skills-item_link">
+                        <div class="skills-item_bg"></div>
+
+                        <div class="skills-item_title">
+                            App Design
+                        </div>
+
+                        <div class="skills-item_date-box">
+                            <span class="skills-item_date">
+                                <p>With a user-friendly interface, interactive elements, and a focus on visual
+                                    aesthetics, the app will help users make a lasting impression on potential
+                                    clients, collaborators, and employers.</p>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="skills_item">
+                    <a href="#" class="skills-item_link">
+                        <div class="skills-item_bg"></div>
+
+                        <div class="skills-item_title">
+                            AI-ML
+                        </div>
+
+                        <div class="skills-item_date-box">
+                            <span class="skills-item_date">
+                                <p>Using AI intelligence in web developing to create user friendlly
+                                    websites.Developing and maintianing AI-based systems.Using Machine
+                                    learning,Programming,data analysis and other AI-ML technologies.</p>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+    </section>
+    <section class="experience-section" id="experience">
+        <div class="experience-container">
+            <h2 class="experience-header"><i class="fa fa-briefcase" aria-hidden="true"></i> Experience</h2>
+            <ul class="experience-list">
+                <li class="experience-card animate">
+                    <div class="company-logo"><img src="oasis_infobyte_logo.jpg" alt="Company 1 Logo"></div>
+                    <div>
+                        <h3 class="position">Web Development Intern</h3>
+                        <p class="company">Oasis Infobyte</p>
+                        <p class="employment-date">Dec 2023 - Present · 2 months</p>
+                        <ul class="responsibilities">
+                            <li class="responsibility-item">· HTML5 · React.js · Node.js</li>
+                            <li class="responsibility-item">· Express.js · MongoDB</li>
+                            <li class="responsibility-item">· JavaScript · Cascading Style Sheets (CSS)</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="experience-card animate">
+                    <div class="company-logo"><img src="alhansat.jpg" alt="Company 1 Logo"></div>
+                    <div>
+                        <h3 class="position">Full Stack Web Developer Intern</h3>
+                        <p class="company">Alhansat Solutions</p>
+                        <p class="employment-date">Sep 2023 - Oct 2023 · 2 months</p>
+                        <ul class="responsibilities">
+                            <li class="responsibility-item">· Team Leadership</li>
+                            <li class="responsibility-item">· Software Development Life Cycle (SDLC)</li>
+                            <li class="responsibility-item">· Svelte · Full Stack Web Development</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="experience-card animate">
+                    <div class="company-logo"><img src="devtown_in_logo.jpg" alt="Company 2 Logo"></div>
+                    <div>
+                        <h3 class="position">Full-stack Developer Intern</h3>
+                        <p class="company">DevTown</p>
+                        <p class="employment-date">Jun 2022 - Nov 2022 · 6 months</p>
+                        <ul class="responsibilities">
+                            <li class="responsibility-item">· SASS · Document Object Model (DOM) · Redux.js · Data
+                                Structures · Server
+                                Side · Schemas</li>
+                            <li class="responsibility-item">· JSON · API Development · REST APIs · C++ · Full-Stack
+                                Development ·
+                                React.js · Tailwind CSS</li>
+                            <li class="responsibility-item">· MongoDB · JavaScript · DevOps · Cascading Style Sheets
+                                (CSS) · HTML ·
+                                Node.js · Express.js</li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="experience-card animate">
+                    <div class="company-logo"><img src="twowaits_technologies_logo.jpg" alt="Company 3 Logo">
+                    </div>
+                    <div>
+                        <h3 class="position">Tathastu Python Scholar Intern</h3>
+                        <p class="company">TwoWaits</p>
+                        <p class="employment-date">June 2022 · 1 month</p>
+                        <ul class="responsibilities">
+                            <li class="responsibility-item">Python (Programming Language)</li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="work section" id="mywork">
+        <h2 class="project-header"><i class="fas fa-laptop-code"></i> Projects</h2>
+
+        <div class="work__container bd-grid">
+            <div class="work__img">
+                <img src="bookmyshow.JPG" alt="">
+            </div>
+            <div class="work__img">
+                <img src="grocery.JPG" alt="">
+            </div>
+            <div class="work__img">
+                <img src="hotstar.JPG" alt="">
+            </div>
+            <div class="work__img">
+                <img src="saless.png" alt="">
+            </div>
+            <div class="work__img">
+                <img src="tasky.JPG" alt="">
+            </div>
+            <div class="work__img">
+                <img src="zomato.JPG" alt="">
+            </div>
+        </div>
+    </section>
+
+    <!--===== CONTACT =====-->
+
+    <section class="contact section" id="contact">
+        <h2 class="contact-header"><i class="fa fa-envelope" aria-hidden="true"></i>Contact Me</h2>
+
+        <div class="contact__container bd-grid">
+            <form action="" class="contact__form">
+                <input type="text" placeholder="Name" class="contact__input">
+                <input type="mail" placeholder="Email" class="contact__input">
+                <textarea name="" id="" cols="0" rows="10" class="contact__input"></textarea>
+                <input type="button" value="Submit" class="contact__button button">
+            </form>
+        </div>
+    </section>
+
+
+    <script>
+        // Auto-scrolling logic
+        const sections = document.querySelectorAll('section');
+        let index = 0;
+
+        function scrollToNextSection() {
+            index = (index + 1) % sections.length;
+            sections[index].scrollIntoView({ behavior: 'smooth' });
+        }
+
+        setInterval(scrollToNextSection, 20000); // Auto-scroll every 5 seconds
+    </script>
+</body>
+
+</html>
